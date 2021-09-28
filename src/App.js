@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import './App.css'
-import Rect from './Rect.js'
 
 class App extends Component{
   constructor(props){
