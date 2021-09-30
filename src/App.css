@@ -4,6 +4,12 @@ h1{
   margin: 0px 0px 10px 0px;
 }
 
+input:invalid{
+  border:5px dashed red;
+}
+input:valid{
+  border:1px solid blue;
+}
 .box{
   position:fixed;
   top:0px;

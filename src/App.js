@@ -32,11 +32,13 @@ class App extends Component{
         <div className="container">
           <h4>{this.state.title}</h4>
           <p className="card h5 p-3">{this.state.message}</p>
+
           <div className="alert alert-primary mt-3">
             <form onSubmit={this.doSubmit}>
               <div className="form-group">
                 <label>Message:</label>
-                <input type="text" className="form-control" onChange={this.doChange}/>
+                <input type="text" className="form-control" onChange={this.doChange}　
+                required pattern="[A-Za-z _,.]+"/>
               </div>
               <input type="submit" className="btn btn-primary" value="Click"/>
             </form>
