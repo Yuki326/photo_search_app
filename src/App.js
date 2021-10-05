@@ -1,51 +1,48 @@
-import React,{Component} from 'react'
-import './App.css'
+import React, { Component } from "react";
 
-class App extends Component{
-  input = ''
-  constructor(props){
-    super(props)
-    this.state={
-      title:'input form',
-      message:'type your name.'
-    }
-    this.doChange = this.doChange.bind(this)
-    this.doSubmit = this.doSubmit.bind(this)
-  }
+let data = {
+  title: "React-Context",
+  message: "this is sample message"
+};
 
-  doChange(event){
-    this.input = event.target.value;
-  }
+const SampleContext = React.createContext(data);
 
-  doSubmit(event){
-    this.setState({
-      title:'send form',
-      message:'Hello,'+this.input+'!!'
-    })
-    event.preventDefault()
-  }
-
-  render(){
-    return(
+class App extends Component {
+  render() {
+    return (
       <>
-        <h1 className="bg-primary text-white display-4">React</h1>
+        <h1>React</h1>
         <div className="container">
-          <h4>{this.state.title}</h4>
-          <p className="card h5 p-3">{this.state.message}</p>
-
-          <div className="alert alert-primary mt-3">
-            <form onSubmit={this.doSubmit}>
-              <div className="form-group">
-                <label>Message:</label>
-                <input type="text" className="form-control" onChange={this.doChange}　
-                required pattern="[A-Za-z _,.]+"/>
-              </div>
-              <input type="submit" className="btn btn-primary" value="Click"/>
-            </form>
-          </div>
+          <Title />
+          <Message />
         </div>
       </>
-    )
+    );
+  }
+}
+
+class Title extends Component {
+  static contextType = SampleContext;
+
+  render() {
+    return (
+      <>
+        <div>
+          <h2>{this.context.title}</h2>
+        </div>
+      </>
+    );
+  }
+}
+
+class Message extends Component {
+  static contextType = SampleContext;
+  render() {
+    return (
+      <>
+        <p>{this.context.message}</p>
+      </>
+    );
   }
 }
 export default App;
