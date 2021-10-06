@@ -1,48 +1,22 @@
-import React, { Component } from "react";
-
-let data = {
-  title: "React-Context",
-  message: "this is sample message"
-};
-
-const SampleContext = React.createContext(data);
-
-class App extends Component {
-  render() {
-    return (
-      <>
-        <h1>React</h1>
-        <div className="container">
-          <Title />
-          <Message />
-        </div>
-      </>
-    );
-  }
+import React, { useState } from "react";
+import "./App.css";
+function App() {
+  const [count, putCount] = useState(0);
+  const [flag, setFlag] = useState(false);
+  const clickFunc = () => {
+    putCount(count + 1);
+  };
+  const changeFlag = (e) => {
+    setFlag(!flag);
+  };
+  return (
+    <div>
+      <h1>{count}</h1>
+      {flag ? <h1 className="ON">ON</h1> : <h1 className="OFF">OFF</h1>}
+      <button onClick={clickFunc}>+</button>
+      <button onClick={changeFlag}>button</button>
+    </div>
+  );
 }
 
-class Title extends Component {
-  static contextType = SampleContext;
-
-  render() {
-    return (
-      <>
-        <div>
-          <h2>{this.context.title}</h2>
-        </div>
-      </>
-    );
-  }
-}
-
-class Message extends Component {
-  static contextType = SampleContext;
-  render() {
-    return (
-      <>
-        <p>{this.context.message}</p>
-      </>
-    );
-  }
-}
 export default App;

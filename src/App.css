@@ -1,72 +1,76 @@
-h1{
-  text-align:right;
-  padding:0px 50px 10px 50px;
+h1 {
+  text-align: center;
+  padding: 0px 50px 10px 50px;
   margin: 0px 0px 10px 0px;
 }
-
-input:invalid{
-  border:5px dashed red;
+.ON {
+  background-color: orange;
 }
-input:valid{
-  border:1px solid blue;
+.OFF {
+  background-color: skyblue;
 }
-.box{
-  position:fixed;
-  top:0px;
-  left:0px;
-  width:10vw;
-  height:10vh;
-  border-radius:100px;
+input:invalid {
+  border: 5px dashed red;
+}
+input:valid {
+  border: 1px solid blue;
+}
+.box {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 10vw;
+  height: 10vh;
+  border-radius: 100px;
   background-color: green;
-  animation-name:move;
+  animation-name: move;
   animation-duration: 2s;
   animation-iteration-count: 1;
 }
 
-@keyframes move{
-  from{
-    top:0vh;
+@keyframes move {
+  from {
+    top: 0vh;
   }
-  to{
-    top:100vh;
+  to {
+    top: 100vh;
   }
 }
 
-
-.test{
-  position:fixed;
-  top:0px;
-  left:0px;
-  width:10vw;
-  height:10vh;
-  border-radius:100px;
+.test {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 10vw;
+  height: 10vh;
+  border-radius: 100px;
   background-color: green;
-  animation-name:move2;
+  animation-name: move2;
   animation-duration: 2s;
   animation-iteration-count: 1;
 }
 
-@keyframes move2{
-  0%{
-    top:0vh;
+@keyframes move2 {
+  0% {
+    top: 0vh;
   }
-  20%{
-    top:50vh;
+  20% {
+    top: 50vh;
   }
-  40%{
-    top:30vh;
-    left:20px;
+  40% {
+    top: 30vh;
+    left: 20px;
   }
-  60%{
-    top:70vh;
-    left:50px;
+  60% {
+    top: 70vh;
+    left: 50px;
   }
-  80%{
-    top:85vh;
+  80% {
+    top: 85vh;
   }
-  100%{
-    top:100vh;
-    height:100vh;
+  100% {
+    top: 100vh;
+    height: 100vh;
   }
 }
 
