@@ -1,21 +1,78 @@
 import React, { useState } from "react";
 import "./App.css";
-function App() {
-  const [count, putCount] = useState(0);
-  const [flag, setFlag] = useState(false);
-  const clickFunc = () => {
-    putCount(count + 1);
+
+const total = (a) => {
+  let re = 0;
+  for (let i = 0; i <= a; i++) {
+    re += i;
+  }
+  return re;
+};
+
+const tax = (a) => {
+  return Math.floor(a * 1.1);
+};
+
+function useCalc(
+  num = 0,
+  func = (a) => {
+    return a;
+  }
+) {
+  const [msg, setMsg] = useState(null);
+
+  const setValue = (p) => {
+    let res = func(p);
+    setMsg(
+      <p>
+        ※{p}の結果は{res}です
+      </p>
+    );
   };
-  const changeFlag = (e) => {
-    setFlag(!flag);
+
+  return [msg, setValue];
+}
+
+function PlainMessage() {
+  const [msg, setCalc] = useCalc();
+
+  const onChange = (e) => {
+    setCalc(e.target.value);
   };
   return (
-    <div>
-      <h1>{count}</h1>
-      {flag ? <h1 className="ON">ON</h1> : <h1 className="OFF">OFF</h1>}
-      <button onClick={clickFunc}>+</button>
-      <button onClick={changeFlag}>button</button>
-    </div>
+    <>
+      <h5>{msg}</h5>
+      <input type="number" onChange={onChange} className="form-control" />
+    </>
+  );
+}
+
+function AlertMessage() {
+  const [msg, setCalc] = useCalc(0, total);
+
+  const onChange = (e) => {
+    setCalc(e.target.value);
+  };
+  return (
+    <>
+      <h5>{msg}</h5>
+      <input
+        type="number"
+        onChange={onChange}
+        min="0"
+        max="10000"
+        className="form-control"
+      />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <PlainMessage />
+      <AlertMessage />
+    </>
   );
 }
 
